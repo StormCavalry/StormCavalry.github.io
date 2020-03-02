@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        单链表反转和找环 - undefined
         
     </title>
 
@@ -58,7 +58,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/StormCavalry.github.io/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -93,6 +93,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#反转方法1"><span class="toc-text">反转方法1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反转方法2"><span class="toc-text">反转方法2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单链表找环"><span class="toc-text">单链表找环</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -117,87 +121,45 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-02</div>
-        <div class="post-info">
-            <a href="/StormCavalry.github.io/2020/03/02/单链表的反转/">
-                <h3>
-                    单链表反转和找环
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/StormCavalry.github.io/tags/#leetcode" title="leetcode">leetcode</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        单链表反转和找环
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-02</div>
-        <div class="post-info">
-            <a href="/StormCavalry.github.io/2020/03/02/迭代遍历二叉树/">
-                <h3>
-                    非递归遍历二叉树
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/StormCavalry.github.io/tags/#leetcode" title="leetcode">leetcode</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-03-02 23:11:40</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/StormCavalry.github.io/tags/#leetcode" title="leetcode">leetcode</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-01</div>
-        <div class="post-info">
-            <a href="/StormCavalry.github.io/2020/03/01/归并排序/">
-                <h3>
-                    LeetCode 归并排序
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/StormCavalry.github.io/tags/#leetcode" title="leetcode">leetcode</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <h4 id="反转方法1"><a href="#反转方法1" class="headerlink" title="反转方法1"></a>反转方法1</h4><p>创建一个有头节点的链表 head，原链表 listNode，创建一个链表 m 代替 listNode；<br>1.将m.next存起来，因为后面操作时m.next会改变；<br>2.将head.next 接给 m.next(实现反转)；<br>3.在将m接在 head.next下；<br>4.将存下来的m.next给m，重复操作；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">ListNode m = listNode;</span><br><span class="line"><span class="keyword">while</span>(m!=<span class="keyword">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">   ListNode n= m.next;</span><br><span class="line">    m.next=head.next;</span><br><span class="line">    head.next=m;</span><br><span class="line">    m=n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="反转方法2"><a href="#反转方法2" class="headerlink" title="反转方法2"></a>反转方法2</h4><p>在原表 head 设立1个指针(m)，m指向head.next;<br>1.新建一个节点 n, 指向 m.next(n即要变换的节点);<br>2.n.next 接给 m.next(准备将n前移);<br>3.再把head.next 接给 n.next;<br>4.把n接到head后面，重复操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListNode m = head.next;</span><br><span class="line"><span class="keyword">while</span> (m.next != <span class="keyword">null</span> &amp;&amp; m != <span class="keyword">null</span>) &#123;</span><br><span class="line">    ListNode n = m.next;</span><br><span class="line">    m.next = n.next;</span><br><span class="line">    n.next = head.next;</span><br><span class="line">    head.next = n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单链表找环"><a href="#单链表找环" class="headerlink" title="单链表找环"></a>单链表找环</h4><p>用快慢指针的方法判断单链表是否有环是比较便捷的；快指针走两步，慢指针走一步，两个指针相等是，即代表有环，这个这可以画图证明；且起始节点到环起始节点的距离 等于 两指针交点到环起始节点的距离，这也是可以证明的。</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-02-29</div>
-        <div class="post-info">
-            <a href="/StormCavalry.github.io/2020/02/29/Hello! 我的博客/">
-                <h3>
-                    第一天记录
-                </h3>
-            </a>
-            <p>
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -240,7 +202,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/StormCavalry.github.io/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
